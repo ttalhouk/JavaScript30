@@ -1,0 +1,38 @@
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+  background: #ffc600;
+}
+body {
+  padding: 0;
+  margin:0;
+  font-family: 'Amatic SC', cursive;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.game {
+  width:600px;
+  height:400px;
+  display:flex;
+  flex-wrap:wrap;
+  margin:0 auto;
+}
+
+.hammer {
+  /*background:url('../Hammer.png') bottom center no-repeat;
+  background-size:80%;*/
+  height: 100px;
+  width: 100px;
+  display: block;
+  position: absolute;
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform .1s linear;
+  transition: transform .1s linear;
+}
+.hammer.swing {
+  transform: rotate(-90deg);
+  /*-webkit-transition: -webkit-transform .1s linear;
+  transition: transform .1s linear;*/
+}

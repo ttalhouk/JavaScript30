@@ -67,3 +67,22 @@ h1 {
 .hole.up .mole {
   top:0;
 }
+
+.hammer {
+  /*background:url('../Hammer.png') bottom center no-repeat;
+  background-size:80%;*/
+  height: 100px;
+  width: 100px;
+  display: block;
+  position: absolute;
+  transform-origin: bottom;
+  /*z-index: 3;*/
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform .1s linear;
+  transition: transform .1s linear;
+}
+.hammer.swing {
+  transform: rotate(-90deg);
+  /*-webkit-transition: -webkit-transform .1s linear;
+  transition: transform .1s linear;*/
+}

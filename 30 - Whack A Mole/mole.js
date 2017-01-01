@@ -1,10 +1,14 @@
 const holes = document.querySelectorAll('.hole');
 const scoreBoard = document.querySelector('.score');
 const moles = document.querySelectorAll('.mole');
+const game = document.querySelector('.game');
+const hammer = document.querySelector('.hammer');
 let lastHole;
-let timeUp = false;
+let timeUp = true;
 let score = 0;
 let currentMole;
+
+
 
 
 function randomTime(min, max) {
@@ -36,11 +40,12 @@ function startGame() {
   scoreBoard.textContent = score;
   timeUp = false;
   peep();
-  setTimeout(() => timeUp = true, 10000)
+  setTimeout(() => {timeUp = true}, 10000)
 }
 
 function bonk(e) {
   if (!e.isTrusted) return;
+  swing()
   score += 1;
   lastHole.classList.remove('up');
   scoreBoard.textContent = score;
@@ -48,5 +53,24 @@ function bonk(e) {
   if (!timeUp) peep();
 
 }
+function swing(){
+  hammer.classList.add('swing');
+}
+function reload(){
+  this.classList.remove('swing');
+}
 
-moles.forEach(mole => mole.addEventListener('click', bonk))
+function moveHammer(e){
+  console.log(e);
+  if (timeUp) return;
+  const x = e.pageX;
+  const y = e.pageY;
+  hammer.style.left = (x + 25) + 'px';
+  hammer.style.top = (y - 75) + 'px';
+}
+
+
+moles.forEach(mole => mole.addEventListener('click', bonk));
+game.addEventListener('mousemove', moveHammer)
+// hammer.addEventListener('click', swing)
+hammer.addEventListener('transitionend', reload)
