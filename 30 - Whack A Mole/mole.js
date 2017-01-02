@@ -44,7 +44,7 @@ function startGame() {
 }
 
 function bonk(e) {
-  if (!e.isTrusted) return;
+  if (!e.isTrusted  || timeUp) return;
   swing()
   score += 1;
   lastHole.classList.remove('up');
@@ -61,7 +61,6 @@ function reload(){
 }
 
 function moveHammer(e){
-  console.log(e);
   if (timeUp) return;
   const x = e.pageX;
   const y = e.pageY;
